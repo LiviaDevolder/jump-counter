@@ -3,13 +3,14 @@ import MyContext from "../../context/myContext";
 import style from "./RemoveButton.module.scss";
 
 export default function RemoveButton() {
-  const { sumValue, finalValue, setFinalValue } = useContext(MyContext);
+  const { sumValue, setSumValue, finalValue, setFinalValue } = useContext(MyContext);
 
   const handleClick = () => {
-    if (finalValue - sumValue < 0) {
+    if (Number(finalValue) - Number(sumValue) < 0) {
       alert("Insira um valor menor ou igual ao número de pulos atual")
     } else {
-      setFinalValue(finalValue - sumValue)
+      setFinalValue(Number(finalValue) - Number(sumValue))
+      setSumValue(0);
     }
   };
 

@@ -3,14 +3,15 @@ import MyContext from "../../context/myContext";
 import style from "./AddButton.module.scss"
 
 export default function AddButton() {
-  const { sumValue, finalValue, setFinalValue } = useContext(MyContext);
+  const { sumValue, setSumValue, finalValue, setFinalValue } = useContext(MyContext);
 
   const handleClick = () => {
-    if (finalValue + sumValue > 99999) {
+    if (Number(finalValue) + Number(sumValue) > 99999) {
       setFinalValue(99999)
       alert("Parabéns! Você atingiu o limite de 99999 pulos.");
     } else {
-      setFinalValue(finalValue + sumValue)
+      setFinalValue(Number(finalValue) + Number(sumValue))
+      setSumValue(0)
     }
   }
 
